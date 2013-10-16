@@ -105,6 +105,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Flat Page integrated with WYSIWYG editor
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'grimm.urls'
@@ -132,10 +134,15 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    # wysiwyg for flat page and others
+    'tinymce',
+    'flatpages_tinymce',
     # Schema migration
     'south',
     # User app
     'users',
+    # Courses app
+    'courses',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -167,4 +174,17 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+DJANGO_WYSIWYG_FLAVOR = "tinymce"    # or "tinymce_advanced"
+# change default settings of TinyMCE Editor.
+TINYMCE_DEFAULT_CONFIG = {
+    # custom plugins
+    'plugins': "table,spellchecker,paste,searchreplace",
+    # editor theme
+    'theme': "advanced",
+    # custom CSS file for styling editor area
+    'content_css': MEDIA_URL + "css/custom_tinymce.css",
+    # use absolute urls when inserting links/images
+    'relative_urls': False,
 }
