@@ -134,6 +134,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     # Schema migration
     'south',
+    # User app
+    'users',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
